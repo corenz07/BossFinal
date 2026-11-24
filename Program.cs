@@ -32,8 +32,41 @@
  */
 class Program
 {
+    private static int CalculateWeaponDamage(int weaponPower)
+    {
+        return weaponPower;
+    }
+    private static int CalculateRemainingHealth(int currentBossHealth, int damage)
+    {
+        return currentBossHealth - damage;
+    }
+    private static void DisplayBossStatus(int currentBossHealth)
+    {
+        if (currentBossHealth > 0)
+        {
+            Console.WriteLine("Le boss est toujours vivant !");
+        }
+        else
+        {
+            currentBossHealth = 0;
+            Console.WriteLine("Félicitations ! Le boss est vaincu !");
+        }
+    }
     static void Main(string[] args)
     {
-        
+        Console.WriteLine("Vous voilà au fond du donjon, de la fumée remplis la pièce sombre. Vous avancez doucement quand soudain du feu jaillit  de l'obscurité, c'est un dragon !");
+        int bossHealth = 150;
+        int damage = CalculateWeaponDamage(40);
+        while(bossHealth > 0)
+        {
+            Console.WriteLine("Vous l'attaquer !\nDégats : "+damage);
+            bossHealth = CalculateRemainingHealth(bossHealth, 40);
+            if(bossHealth < 0)
+            {
+                bossHealth = 0;
+            }
+            Console.WriteLine("Santé du dragon : " + bossHealth);
+            DisplayBossStatus(bossHealth);
+        }
     }
 }
